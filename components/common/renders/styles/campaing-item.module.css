@@ -6,8 +6,63 @@
 }
 
 .checkboxBtn {
-  border: 1px solid #64798C;
+  border: 1px solid #64798c;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (max-width: 1010px) {
+  .InfoBlock {
+    gap: 1rem;
+  }
+  .blockCntnt {
+    gap: 1.5rem;
+  }
+  .dataContainer {
+    width: 67px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .checkboxBtn {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .InfoBlock {
+    gap: 1rem;
+  }
+  .blockCntnt {
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 524px) {
+  .InfoBlock {
+    column-gap: 0.6rem;
+    row-gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .gridBtn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .titleSize {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 405px) {
+  .btnStatus {
+    padding: 5px 10px;
+  }
 }

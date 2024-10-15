@@ -25,7 +25,7 @@ export default function NavBar(props: NavBarProps) {
   }, [theme.mode])
 
     return (
-        <NavigationMenu className={` ${styles.NavCont} dark:bg-slate-800 bg-slate-300 pt-5 pb-5 flex row flex-wrap gap-2 align-center justify-between p-10`}>
+        <NavigationMenu className={`${styles.NavCont} dark:bg-slate-800 bg-slate-300 pt-5 pb-5 flex row flex-wrap gap-2 align-center justify-between p-10`}>
             <NavigationMenuList className="gap-2">
                 {data.map(elem => {
                         return (

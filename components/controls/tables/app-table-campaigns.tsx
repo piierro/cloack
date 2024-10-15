@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { 
     ChartColumnDecreasing, 
-    ChartPie,
+    CircleDot,
     CircleX, 
     Clock3, 
     Download,
+    FolderPen,
     LogIn, 
-    NotepadText,
-    Pen 
+    Pen, 
+    SquareArrowOutUpRight
 } from "lucide-react";
 import { ReactNode } from "react";
 //@ts-ignore
@@ -16,7 +17,6 @@ import google from '../../../assets/google.png'
 import { ICampaign } from "@/components/context/types/schemes";
 import { Checkbox } from "@/components/ui/checkbox";
 import styles from './Table.module.css';
-import NameIcon from '../../../assets/svg-icon/name.svg';
 
 export interface AppTableCampaignsProps {
     data: ICampaign[],
@@ -30,29 +30,29 @@ export default function AppTableCampaigns(props: AppTableCampaignsProps) {
     return (
         headersRender?.('') ||
         <div className="app-table-wrapper">
-            <div className="headers-table hidden md:ml-auto md:flex flex flex-wrap justify-between items-center mb-3">
+            <div className={` ${styles.HeaderTable} headers-table hidden md:ml-auto md:flex flex flex-wrap justify-between items-center mb-3`}>
                     <div className={` ${styles.TabName} name-header flex items-center gap-2`}>
-                      <img src={NameIcon} style={{ width: '18px', height: '18px'}} /> 
-                      Name
+                      <FolderPen style={{ width: '18px', height: '18px'}} /> 
+                       <span style={{fontSize: '14px'}}>Name</span>
                     </div>
-                    <div className="other-headers flex items-center justify-between gap-16">
+                    <div className={`${styles.blockTitle} other-headers flex items-center justify-between gap-14`}>
                         <div className="page-status flex items-center gap-5">
                             <div className="page flex items-center gap-2 text-1xl">
-                            <NotepadText style={{ width: '18px', height: '18px'}} />
-                            Page
+                            <SquareArrowOutUpRight style={{ width: '18px', height: '18px'}} />
+                              <span style={{fontSize: '14px'}}>Page</span>
                             </div>
                             <div className="status flex items-center gap-2 text-1xl">
-                            <ChartPie style={{ width: '18px', height: '18px'}}/>
-                            Status
+                            <CircleDot style={{ width: '18px', height: '18px'}}/>
+                            <span style={{fontSize: '14px'}}>Status</span>
                             </div>
                         </div>
                         <div className="last-updated flex items-center gap-2 text-1xl">
                         <Clock3 style={{ width: '18px', height: '18px'}} />
-                            Last updated
+                            <span style={{fontSize: '14px'}}>Last updated</span>
                         </div>
                         <div className="passed flex items-center gap-2 text-1xl">
                         <LogIn style={{ width: '18px', height: '18px'}}/>
-                            Pass
+                         <span style={{fontSize: '14px'}}>Pass</span>
                         </div>
                     </div>
             </div>
@@ -71,8 +71,9 @@ export default function AppTableCampaigns(props: AppTableCampaignsProps) {
                                     <span className="md:hidden gray-text">Name</span>
                                     {item.name}
                                 </div>
+                                
                                 <div className="other-info flex  items-center flex-wrap justify-between gap-10">
-                                    <div className="flex  items-center gap-5">
+                                    <div className={`${styles.blockCntnt} flex  items-center gap-5`}>
 
                                         <div className="page flex flex-col items-start gap-1">
                                           <span className="md:hidden gray-text">Page</span>
@@ -106,6 +107,8 @@ export default function AppTableCampaigns(props: AppTableCampaignsProps) {
                                             <span>passed</span>
                                         </div>
                                     </div>
+
+                                
                                  <div className="actions-md flex md:hidden items-center flex-wrap gap-3">
                                     <Button className="bg-background" variant={'secondary'}>
                                     <a className="flex items-center justify-center gap-2">

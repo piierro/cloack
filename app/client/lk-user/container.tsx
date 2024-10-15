@@ -1,19 +1,16 @@
 "use client"
 
 import PaginationElement from "@/components/controls/pagination";
-import TableComponent, { TableData, TableDataElemInterface } from "@/components/controls/table";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "@/components/common/navbar";
 import { routes } from "@/components/routes";
-import { ClockIcon, Cross1Icon, DownloadIcon, LinkBreak1Icon, Pencil1Icon, TransformIcon, UpdateIcon } from "@radix-ui/react-icons";
-import { BarChartIcon, Loader2, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import useAuthed from "@/components/context/hooks/useAuthed";
 import { useAppSelector } from "@/components/context/redux/hooks";
 import { ThemeProvider } from "@/components/common/theme-provider";
 import CampaignService from "@/components/context/services/CampaignService";
 import useFetch from "@/components/hooks/useFetch";
 import { ICampaign } from "@/components/context/types/schemes";
-import { ModalConfirm } from "@/components/controls//modals/modal-confirm";
 import { toast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
 import pagination from "@/components/utils/pagination";

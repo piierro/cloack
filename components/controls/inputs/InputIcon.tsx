@@ -14,7 +14,7 @@ export interface InputComponentProps extends InputProps {
 export default function InputIconComponent(props: InputComponentProps) {
     const {icon, type, placeholder, classNameContainer, classNameInput, ...other} = props
     return (
-        <div className={`w-full max-w-sm items-center flex gap-1.5 rounded-lg pl-2 ${classNameContainer}`}>
+        <div className={`w-full items-center flex gap-1.5 rounded-lg pl-2 ${classNameContainer}`}>
         {icon}
         <Input type={type} id="email" placeholder={placeholder} className={`focus-visible:ring-0 ${classNameInput}`} {...other} />
       </div>
