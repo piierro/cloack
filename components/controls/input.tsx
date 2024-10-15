@@ -15,7 +15,7 @@ export interface InputComponentProps extends InputProps {
 export default function InputComponent(props: InputComponentProps) {
     const {label, type, placeholder, classNameContainer, classNameInput, classNameLabel, ...other} = props
     return (
-        <div className={`grid w-full max-w-sm items-center gap-1.5 ${classNameContainer}`}>
+        <div className={`grid w-full items-center gap-1.5 ${classNameContainer}`}>
         <Label className={classNameLabel} htmlFor="email">{label}</Label>
         <Input type={type} id="email" placeholder={placeholder} className={classNameInput} {...other} />
       </div>

@@ -1,9 +1,6 @@
 import api from '../http/index'
 import { AccountLoginResponse, GetUserResponse } from '../types/AccountTypes'
 
-
-
-
 export default class AccountService {
     static async Login(token: string) {
         const result = await api.post<AccountLoginResponse>('/user/login', {token})

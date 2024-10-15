@@ -1,5 +1,5 @@
 import { createSlice, createStore, Store } from "@reduxjs/toolkit"
-import {createWrapper, Context, HYDRATE} from 'next-redux-wrapper';
+import { createWrapper, Context } from 'next-redux-wrapper';
 export interface AuthReducerState {
     authorized: boolean
 }
@@ -7,9 +7,6 @@ export interface AuthReducerState {
 const initialState: AuthReducerState = {
     authorized: false
 }
-
-
-
 
 export const authReducer = createSlice({
     name: 'authReducer',

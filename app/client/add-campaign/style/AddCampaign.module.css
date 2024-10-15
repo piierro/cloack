@@ -1,11 +1,65 @@
 .rmsc_update {
-    --rmsc-main: #fefeff !important;
-    --rmsc-hover: #1D2B39 !important;
-    --rmsc-selected: #2b2c2e !important;
-    --rmsc-border: #ccc !important;
-    --rmsc-gray: #aaa !important;
-    --rmsc-bg: #1D2B39 !important;
-    --rmsc-p: 10px !important;
-    --rmsc-radius: 10px !important;
-    --rmsc-h: 38px !important;
+  --rmsc-main: #fefeff !important;
+  --rmsc-hover: #1d2b39 !important;
+  --rmsc-selected: #2b2c2e !important;
+  --rmsc-border: #64798cac !important;
+  --rmsc-gray: #aaa !important;
+  --rmsc-bg: #1d2b39 !important;
+  --rmsc-p: 10px !important;
+  --rmsc-radius: 10px !important;
+  --rmsc-h: 38px !important;
+}
+
+.switch {
+  flex-wrap: nowrap;
+}
+
+.successBtn {
+  padding: 10px 40px;
+}
+
+.content {
+  padding: 0 2.5rem;
+  width: 100%;
+}
+
+.labelSwitch {
+  white-space: nowrap;
+}
+
+.inputContainer {
+  /* mb-10 flex items-center gap-3` */
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media screen and (max-width: 1300px) {
+  .switch {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+  }
+  .inputContainer {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .content {
+    padding: 0 2rem;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .content {
+    padding: 0 1.5rem;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .content {
+    padding: 0 1rem;
+  }
 }

@@ -393,13 +393,13 @@ const validationForm = () => {
             </div>
             </div>
             <div className="input-container mb-5"> 
-            <InputComponent value={blackPage} onChange={e => setBlackPage(e.currentTarget.value)} label="Black page" placeholder="Black page" />
+            <InputComponent value={blackPage} onChange={e => setBlackPage(e.currentTarget.value)} label="Black page" placeholder="Enter Black page" />
             <div className="error-field error-name-field">
                 {errorBlackPage}
             </div>
             </div>
             <div className="input-container mb-5"> 
-            <InputComponent value={whitePage} onChange={e => setWhitePage(e.currentTarget.value)} label="White page" placeholder="White page" />
+            <InputComponent value={whitePage} onChange={e => setWhitePage(e.currentTarget.value)} label="White page" placeholder="Enter White Page" />
             <div className="error-field error-name-field">
                 {errorWhitePage}
             </div>
@@ -415,8 +415,8 @@ const validationForm = () => {
                       <div className="grid gap-3">
                         <Label htmlFor="status">Status</Label>
                         <Select value={status} onValueChange={e => setStatus(e)}>
-                          <SelectTrigger id="status" aria-label="Select status">
-                            <SelectValue placeholder="Select status" />
+                          <SelectTrigger id="status" aria-label="Select">
+                            <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="0">Deactivated</SelectItem>

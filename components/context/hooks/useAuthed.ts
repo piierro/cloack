@@ -10,6 +10,7 @@ export default function useAuthed() {
     const pathname = usePathname()
     const [authed, isLoading, error, errors] = useFetch(async () => {
         router.push('/client/lk-user')
+        router.push('/client/add-campaign')
         // const token = localStorage.getItem('token')
         // if(!token || token.length <= 0) {
         //     router.push('/client/auth')

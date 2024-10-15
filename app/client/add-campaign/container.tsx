@@ -7,7 +7,7 @@ import { useAppSelector } from "@/components/context/redux/hooks";
 import InputComponent from "@/components/controls/input";
 import { routes } from "@/components/routes";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -23,14 +23,10 @@ import CampaignService from "@/components/context/services/CampaignService";
 import { ICampaignBody } from "@/components/context/types/schemes";
 import { Toaster } from "@/components/ui/toaster";
 import { toast } from "@/hooks/use-toast";
-import { Check, ClipboardX, Info, MonitorDot, Save, ShieldCheck, ShieldMinus, Smartphone, Tablet, Tv, X } from "lucide-react";
+import { Check, Info, MonitorDot, Smartphone, Tablet, Tv, X } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import facebook from '../../../assets/facebook.png'
-import google from '../../../assets/google.png'
-import tiktok from '../../../assets/tiktok.png'
-import reddit from '../../../assets/reddit.png'
-import youtube from '../../../assets/youtube.png'
 import { ModalInfo } from "@/components/controls/modals/modal-info";
+import styles from './style/AddCampaign.module.css';
 export interface SelectedProps {
   label: string,
   value: string
@@ -245,57 +241,72 @@ const theme = useAppSelector(state => state.themeReducer)
       <div className="wrapper">
         <NavBar data={routes} />
         <Toaster />
-       <div className="container mt-10 mb-10">
+       <div className={`${styles.content} mt-10 mb-10`}>
         <div className="header gap-4 mb-5">
         <div className="title-page mb-10">
                 <div className="text-3xl bg-card rounded-lg pt-6 pb-6 pl-5">Campaign controller</div>
             </div>
         </div>
-        <div className="form-container flex flex-wrap md:flex-nowrap">
+        <div className="form-container flex flex-wrap md:flex-nowrap gap-8">
 
         <div className="form-filters p-3 mb-10">
             <CardHeader className="p-0 pt-6">
-            <CardTitle className="title-container container text-2xl mb-5">Filters campaign</CardTitle>
+            <CardTitle className="title-container container text-2xl mb-5">Campaign Filters</CardTitle>
             </CardHeader>
             <div className="container flex flex-wrap gap-5 items-start">
 
 
-            <div className="first-container">
-            <div className="switchers flex flex-wrap gap-5">
-            <div className="input-container mb-10 flex items-center gap-3"> 
-            <Switch 
-            onCheckedChange={checked => setVpnProxy(checked)} 
-            id="vpn/proxy" 
-            className={vpnProxy ? 'switcher-checked' : ''}
-            />
-            <Label htmlFor="vpn/proxy">VPN/Proxy</Label>
-            </div>
-            <div className="input-container mb-10 flex items-center gap-3"> 
-            <Switch 
-            onCheckedChange={checked => setIpv6(checked)} 
-            id="ipv6" 
-            className={ipv6 ? 'switcher-checked' : ''}
-            />
-            <Label htmlFor="ipv6">IPV6</Label>
-            </div>
-            <div className="input-container mb-10 flex items-center gap-3"> 
-            <Switch 
-            onCheckedChange={checked => setMaximumClicksByIp(checked)} 
-            id="maximum-clicks-by-ip" 
-            className={maximumClicksByIp ? 'switcher-checked' : ''}
-            />
-            <Label htmlFor="maximum-clicks-by-ip">Maximum clicks from one IP</Label>
-            </div>
-            <div className="input-container mb-10 flex items-center gap-3"> 
-            <Switch 
-            onCheckedChange={checked => setFilterEmptyReferer(checked)} 
-            id="filter-empty-referer" 
-            className={filterEmptyReferer ? 'switcher-checked' : ''}
-            />
-            <Label htmlFor="filter-empty-referer">Filter empty referer</Label>
-            </div>
-            </div>
-            <div className="input-container mb-5"> 
+          <div className="first-container">
+
+          <div className={`${styles.switch} switchers flex flex-wrap gap-5`}>
+
+          <div className={styles.inputContainer}> 
+               <Switch 
+                  onCheckedChange={checked => setVpnProxy(checked)} 
+                  id="vpn/proxy" 
+                  className={vpnProxy ? 'switcher-checked' : ''}
+                  style={{background: "#64798C"}}
+               />
+              <Label htmlFor="vpn/proxy">VPN/Proxy</Label>
+          </div>
+
+          <div className={styles.inputContainer}> 
+              <Switch 
+                onCheckedChange={checked => setIpv6(checked)} 
+                id="ipv6" 
+                className={ipv6 ? 'switcher-checked' : ''}
+                style={{background: "#64798C"}}
+              />
+              <Label htmlFor="ipv6">IPV6</Label>
+          </div>
+
+          <div className={styles.inputContainer}> 
+              <Switch 
+                onCheckedChange={checked => setMaximumClicksByIp(checked)} 
+                id="maximum-clicks-by-ip" 
+                className={maximumClicksByIp ? 'switcher-checked' : ''}
+                style={{background: "#64798C"}}
+              />
+              <Label htmlFor="maximum-clicks-by-ip" className={styles.labelSwitch}>
+                Maximum clicks from one IP
+              </Label>
+          </div>
+
+          <div className={styles.inputContainer}> 
+              <Switch 
+                onCheckedChange={checked => setFilterEmptyReferer(checked)} 
+                id="filter-empty-referer" 
+                className={filterEmptyReferer ? 'switcher-checked' : ''}
+                style={{background: "#64798C"}}
+              />
+            <Label htmlFor="filter-empty-referer" className={styles.labelSwitch}>
+              Filter empty referer
+            </Label>
+          </div>
+
+          </div>
+
+          <div className="input-container mb-5"> 
             <InputComponent 
             disabled={maximumClicksByIp ? false : true} 
             value={numberMaximumClicksByIp} 
@@ -331,12 +342,12 @@ const theme = useAppSelector(state => state.themeReducer)
             />
             </div>
             <div className="checkbox-container mb-3 mt-3 flex items-center gap-3">
-            <Checkbox onCheckedChange={checked => setAllowGeoFilter(checked)} id="allow-geo-filter" />
+            <Checkbox onCheckedChange={checked => setAllowGeoFilter(checked)} id="allow-geo-filter" style={{border: '1px solid #64798C'}}/>
             <Label htmlFor="allow-geo-filter">Allow geo filter</Label>
             </div>
             </div>
             <div className="input-container mb-5"> 
-            <Label className="mb-3 text-1xl">Geo filter</Label>
+            <Label className="mb-3 text-1xl">Device filter</Label>
             <div className="container-select-search mt-2 mb-2"> 
             <MultiSelect 
             options={devices_array} 
@@ -354,7 +365,7 @@ const theme = useAppSelector(state => state.themeReducer)
             />
             </div>
             <div className="checkbox-container mb-3 flex items-center gap-3">
-            <Checkbox onCheckedChange={checked => setAllowDeviceFilter(checked)} id="allow-device-filter" />
+            <Checkbox onCheckedChange={checked => setAllowDeviceFilter(checked)} id="allow-device-filter" style={{border: '1px solid #64798C'}}/>
             <Label htmlFor="allow-device-filter text-1xl">Allow device filter</Label>
             </div>
             </div>
@@ -369,42 +380,43 @@ const theme = useAppSelector(state => state.themeReducer)
             rows={5}
             />
             <div className="checkbox-container mb-3 mt-2 flex items-center gap-3">
-            <Checkbox onCheckedChange={checked => setAllowRefererFilter(checked)} id="allow-referer-filter" />
+            <Checkbox onCheckedChange={checked => setAllowRefererFilter(checked)} id="allow-referer-filter" style={{border: '1px solid #64798C'}} />
             <Label htmlFor="allow-referer-filter">Allow referer filter</Label>
             </div>
-            <Label>Fast referers</Label>
-            <div className="referers-container flex flex-wrap gap-5 mt-2">
-            <div className="checkbox-container flex row flex-wrap items-center justify-center gap-2">
-            <Checkbox onCheckedChange={checked => setFilterEmptyReferer(checked)} id="facebook-referer" />
+
+            {/* <Label>Fast referers</Label> */}
+            {/* <div className="referers-container flex flex-wrap gap-5 mt-2"> */}
+            {/* <div className="checkbox-container flex row flex-wrap items-center justify-center gap-2"> */}
+            {/* <Checkbox onCheckedChange={checked => setFilterEmptyReferer(checked)} id="facebook-referer" />
             <Label className="flex flex-wrap gap-1 items-center justify-center" htmlFor="facebook-referer">
              <img src={facebook.src} width={24} height={24} /> Facebook
-              </Label>
-              </div>
-              <div className="checkbox-container flex row flex-wrap items-center justify-center gap-2">
+            </Label> */}
+              {/* </div> */}
+              {/* <div className="checkbox-container flex row flex-wrap items-center justify-center gap-2">
             <Checkbox onCheckedChange={checked => setFilterEmptyReferer(checked)} id="google-referer" />
             <Label className="flex flex-wrap gap-1 items-center justify-center" htmlFor="google-referer">
             <img src={google.src} width={24} height={24} /> Google
               </Label>
-              </div>
-              <div className="checkbox-container flex row flex-wrap items-center justify-center gap-2">
+              </div> */}
+              {/* <div className="checkbox-container flex row flex-wrap items-center justify-center gap-2">
             <Checkbox onCheckedChange={checked => setFilterEmptyReferer(checked)} id="reddit-referer" />
             <Label className="flex flex-wrap gap-1 items-center justify-center" htmlFor="reddit-referer">
             <img src={reddit.src} width={24} height={24} /> Reddit
               </Label>
-              </div>
-              <div className="checkbox-container flex row flex-wrap items-center justify-center gap-2">
+              </div> */}
+              {/* <div className="checkbox-container flex row flex-wrap items-center justify-center gap-2">
             <Checkbox onCheckedChange={checked => setFilterEmptyReferer(checked)} id="tiktok-referer" />
             <Label className="flex flex-wrap gap-1 items-center justify-center" htmlFor="tiktok-referer">
             <img src={tiktok.src} width={24} height={24}/> Tiktok
               </Label>
-              </div>
-              <div className="checkbox-container flex row flex-wrap items-center justify-center gap-2">
+              </div> */}
+              {/* <div className="checkbox-container flex row flex-wrap items-center justify-center gap-2">
             <Checkbox onCheckedChange={checked => setFilterEmptyReferer(checked)} id="youtube-referer" />
             <Label className="flex flex-wrap gap-1 items-center justify-center" htmlFor="youtube-referer">
             <img src={youtube.src} width={24} height={24} /> Youtube
               </Label>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
             </div>
             </div>
             
@@ -426,7 +438,7 @@ const theme = useAppSelector(state => state.themeReducer)
             value={name} 
             onChange={e => setName(e.currentTarget.value)} 
             label="Name" 
-            placeholder="Name" 
+            placeholder="Enter Name" 
             classNameLabel="text-1xl"
             />
             <div className="error-field error-name-field">
@@ -440,7 +452,7 @@ const theme = useAppSelector(state => state.themeReducer)
             value={blackPage} 
             onChange={e => setBlackPage(e.currentTarget.value)} 
             label="Black page" 
-            placeholder="Black page" 
+            placeholder="Enter Black page" 
             classNameLabel="text-1xl"
             />
             <div className="error-field error-name-field">
@@ -449,12 +461,16 @@ const theme = useAppSelector(state => state.themeReducer)
             <div className="method-visible flex gap-2 mt-2">
             <RadioGroup onValueChange={e => setTypeLoadBlackPage(e)} className="flex flex-wrap gap-4">
       <div className="flex items-center space-x-2">
-        <RadioGroupItem className="rounded-sm" value="show_content" id="r2" />
+        <RadioGroupItem className="rounded-sm" value="show_content" id="r2" style={{border: '1px solid #64798C'}} />
         <Label className="success-text" htmlFor="r2">Show content</Label>
       </div>
       <div className="flex items-center space-x-2">
-        <RadioGroupItem className="rounded-sm" value="redirect" id="r3" />
+        <RadioGroupItem className="rounded-sm" value="redirect" id="r3" style={{border: '1px solid #64798C'}}/>
         <Label className="destructive-text" htmlFor="r3">Redirect</Label>
+      </div>
+      <div className="flex items-center space-x-2">
+        <RadioGroupItem className="rounded-sm" value="true_safe" id="r7" style={{border: '1px solid #64798C'}}/>
+        <Label className="purple-text flex items-center" htmlFor="r7">True safe</Label>
       </div>
     </RadioGroup>
             </div>
@@ -467,7 +483,7 @@ const theme = useAppSelector(state => state.themeReducer)
             onChange={e => setWhitePage(e.currentTarget.value)} 
             label="White page" 
             disabled={typeLoadWhitePage === 'true_safe'} 
-            placeholder="White page" 
+            placeholder="Enter White Page" 
             classNameLabel="text-1xl"
             />
             <div className="error-field error-name-field">
@@ -476,15 +492,15 @@ const theme = useAppSelector(state => state.themeReducer)
             <div className="method-visible flex gap-2 mt-2">
             <RadioGroup onValueChange={e => setTypeLoadWhitePage(e)} className="flex flex-wrap gap-4">
       <div className="flex items-center space-x-2">
-        <RadioGroupItem className="rounded-sm" value="show_content" id="r4" />
+        <RadioGroupItem className="rounded-sm" value="show_content" id="r4" style={{border: '1px solid #64798C'}} />
         <Label className="success-text" htmlFor="r4">Show content</Label>
       </div>
       <div className="flex items-center space-x-2">
-        <RadioGroupItem className="rounded-sm" value="redirect" id="r5" />
+        <RadioGroupItem className="rounded-sm" value="redirect" id="r5" style={{border: '1px solid #64798C'}} />
         <Label className="destructive-text" htmlFor="r5">Redirect</Label>
       </div>
       <div className="flex items-center space-x-2">
-        <RadioGroupItem className="rounded-sm" value="true_safe" id="r6" />
+        <RadioGroupItem className="rounded-sm" value="true_safe" id="r6"  style={{border: '1px solid #64798C'}}/>
         <Label className="purple-text flex items-center" htmlFor="r6">True safe <ModalInfo 
         title='Info of "True safe" option'
         description="True safe option use when you want redirect on to one from list random white pages"
@@ -508,7 +524,7 @@ const theme = useAppSelector(state => state.themeReducer)
                         <Label className="text-1xl" htmlFor="status">Status</Label>
                         <Select value={status} onValueChange={e => setStatus(e)}>
                           <SelectTrigger className={`border border-card ${status === '1' ? 'success' : status === '0' ? 'destructive' : ''}`} id="status" aria-label="Select status">
-                            <SelectValue placeholder="Select status" />
+                            <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent className="border border-card">
                             <SelectItem value="0">
@@ -521,8 +537,8 @@ const theme = useAppSelector(state => state.themeReducer)
                               </SelectItem>
                           </SelectContent>
                         </Select>
-                        <div className="actions-buttons flex flex-row-reverse md:flex-row items-center md:items-start justify-center md:justify-start gap-5">
-                          <Button onClick={() => createCampaign()} className="gap-2" variant={'success'}>
+                        <div className="actions-buttons flex flex-row-reverse md:flex-row items-center md:items-start justify-center md:justify-start gap-5 mt-5">
+                          <Button onClick={() => createCampaign()} className={`${styles.successBtn} gap-2`} variant={'success'}>
                           <Check />
                             Save campaign
                           </Button>

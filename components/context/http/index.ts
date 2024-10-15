@@ -9,7 +9,7 @@ const api = () => {
         withCredentials: true,
         baseURL
     })
-    let token = null
+    let token: string | null = null
     if(typeof window !== 'undefined') {
     token = localStorage.getItem('token')
     }
