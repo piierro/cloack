@@ -1,0 +1,33 @@
+.authContainer {
+  width: 430px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.formCont {
+  width: 430px;
+}
+
+.inputAuth {
+  border: 1px solid #64798c;
+  border-right: none;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.btnAuth {
+  background: #64798c;
+}
+
+@media screen and (max-width: 484px) {
+  .authContainer {
+    height: 60px;
+  }
+  .authContainer,
+  .formCont {
+    width: 320px;
+  }
+  .textAuth {
+    font-size: 1rem;
+  }
+}

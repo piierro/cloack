@@ -1,0 +1,13 @@
+.TabBlock {
+  border-top: 1px solid #425a6f;
+  border-left: 1px solid #425a6f;
+  border-bottom: 1px solid #344452;
+  border-right: 1px solid #344452;
+}
+
+.checkboxBtn {
+  border: 1px solid #64798C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
